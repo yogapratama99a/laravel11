@@ -27,13 +27,15 @@ Route::get('user/acara3/{name?}', function ($name = null) {
 Route::get('user/acara3/{name?}', function ($name = "John") {
     return $name;
 });
-Route::get('user//acara3/{name}', function ($name) {
-
+Route::get('user/acara3/{name}', function ($name) {
+    return $name;
 })->where('name', '[A-Za-z]+');
-Route::get('user/{id}', function ($id) { })->where('id', '[0-9]+');
-Route::get('user/{id}{name}', function ($id, $name) { })->where(['id' => '[0-9]+', 'name' => '[a-z]+']);
 Route::get('user/{id}', function ($id) {
-});
+    return $id;
+})->where('id', '[0-9]+');
+Route::get('user/{id}/{name}', function ($id, $name) {
+    return "User ID: $id, Username: $nama";
+ })->where(['id' => '[0-9]+', 'name' => '[a-z]+']);
 Route::get('search/{search}', function ($search) {
     return $search;
 })->where('search', '.*');
@@ -48,11 +50,9 @@ Route::get('/generate-url', function () {
     $url = route('profile', ['id' => 5]);
     return "URL ke profile: $url";
 });
-
 Route::get('/redirect-profile', function () {
     return redirect()->route('profile', ['id' => 5]);
 });
-
 Route::middleware(['first', 'second'])->group(function () {
     Route::get('/first', function () {
     });
@@ -61,7 +61,6 @@ Route::middleware(['first', 'second'])->group(function () {
 });
 Route::
         namespace('Admin')->group(function () { });
-
 Route::domain('{account).myapp.com')->group(function () {
     Route::get('user/{id}', function ($account, $id) {
     });
@@ -89,6 +88,7 @@ Route::get('/home', [ManagementUserController::class, 'index']);
 
 //Acara 7
 Route::resource('/homeacara7', HomeController::class);
+
 //Acara 8
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::resource('dashboard', DashboardController::class);
