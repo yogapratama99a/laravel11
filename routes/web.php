@@ -16,17 +16,20 @@ use App\Http\Controllers\UploadController;
 use App\Http\Controllers\ApiPendidikanController;
 
 //Acara 3
-Route::get('/index', function () {
+Route::get('/', function () {
     return view('welcome');
-});
-Route::get('/user', [UserController::class, 'index']);
+// Route::get('/index', function () {
+//     return view('welcome');
+// });
+// Route::get('/user', [UserController::class, 'index']);
 
-Route::match(['get', 'post'], '/', function () {
-    return 'ini match';
+// Route::match(['get', 'post'], '/', function () {
+//     return 'ini match';
+// });
+// Route::any('/', function () {
+//     return 'ini any';
 });
-Route::any('/', function () {
-    return 'ini any';
-});
+
 Route::redirect('/here', 'there', 301);
 Route::view('/welcome2', 'welcome');
 Route::view('/welcome3', 'welcome')->name('Taylor');
