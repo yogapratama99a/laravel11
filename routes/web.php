@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ManagementUsercontroller;
+use App\Http\Controllers\ManagementUserController;
 use App\Http\Controllers\SessionController;
 use App\Http\Middleware\CheckAge;
 use Illuminate\Support\Facades\Route;
