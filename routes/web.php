@@ -14,20 +14,20 @@ use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\CobaController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\ApiPendidikanController;
+use Illuminate\Support\Facades\Auth;
 
 //Acara 3
-Route::get('/', function () {
-    return view('welcome');
-// Route::get('/index', function () {
-//     return view('welcome');
-// });
-// Route::get('/user', [UserController::class, 'index']);
+Route::any('/', function () {
+    return 'ini any';
+});
 
-// Route::match(['get', 'post'], '/', function () {
-//     return 'ini match';
-// });
-// Route::any('/', function () {
-//     return 'ini any';
+Route::get('/index', function () {
+    return view('welcome');
+});
+Route::get('/user', [UserController::class, 'index']);
+
+Route::match(['get', 'post'], '/', function () {
+    return 'ini match';
 });
 
 Route::redirect('/here', 'there', 301);
@@ -106,6 +106,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::resource('dashboard', DashboardController::class);
     Route::resource('product', ProductController::class);
 });
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
