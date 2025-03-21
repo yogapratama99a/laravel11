@@ -126,14 +126,14 @@ Route::get('/admin/profile2', function () {
 })->middleware(CheckAge::class);
 
 Route::get('/2', function () {
+
 })->middleware('web');
-
 Route::group(['middleware' => ['web']], function () { });
-
 ROute::middleware(['web', 'subscribed'])->group(function () {
-});
 
+});
 Route::put('post/{id}', function () {
+
 })->middleware('role:editor');
 
 //ACARA 13 14 15 16
